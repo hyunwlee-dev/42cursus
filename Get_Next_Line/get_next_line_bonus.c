@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunwlee <hyunwlee@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 17:12:15 by hyunwlee          #+#    #+#             */
-/*   Updated: 2021/01/12 22:43:46 by hyunwlee         ###   ########.fr       */
+/*   Updated: 2021/01/12 22:43:59 by hyunwlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,28 +59,28 @@ int     handle_buf_line(char **line, char **buf_safe, ssize_t idx)
 int        get_next_line(int fd, char **line)
 {
     char        buf[BUFFER_SIZE + 1];
-    static char *buf_safe;
+    static char *buf_safe[OPEN_MAX];
     ssize_t     idx;
     ssize_t     read_byte;
 
-    init_buf_safe(&buf_safe);
+    init_buf_safe(&(buf_safe[fd]));
     while ((read_byte = read(fd, buf, BUFFER_SIZE)) > 0)
     {
         buf[read_byte] = '\0';
-        if (!(buf_safe = ft_strjoin(&buf_safe, buf)))
+        if (!(buf_safe[fd] = ft_strjoin(&(buf_safe[fd]), buf)))
             return (-1);
         idx = 0;
-        while (*(buf_safe + idx) && *(buf_safe + idx) != '\n')
+        while (*(buf_safe[fd] + idx) && *(buf_safe[fd] + idx) != '\n')
             idx++;
-        if (*(buf_safe + idx) == '\n')
-            return (handle_buf_line(line, &buf_safe, idx));
+        if (*(buf_safe[fd] + idx) == '\n')
+            return (handle_buf_line(line, &(buf_safe[fd]), idx));
     }
     if (!(read_byte))
     {
         idx = 0;
-        while (*(buf_safe + idx) && *(buf_safe + idx) != '\n')
+        while (*(buf_safe[fd] + idx) && *(buf_safe[fd] + idx) != '\n')
             idx++;
-        return (handle_buf_line(line, &buf_safe, idx));
+        return (handle_buf_line(line, &(buf_safe[fd]), idx));
     }
     return (-1);
 }
