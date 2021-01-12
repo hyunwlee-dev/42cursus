@@ -6,7 +6,7 @@
 /*   By: hyunwlee <hyunwlee@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 17:12:15 by hyunwlee          #+#    #+#             */
-/*   Updated: 2021/01/12 20:11:27 by hyunwlee         ###   ########.fr       */
+/*   Updated: 2021/01/12 21:01:10 by hyunwlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ int        get_next_line(int fd, char **line)
 {
     char        buf[BUFFER_SIZE + 1];
     static char *buf_safe;
-    ssize_t      idx;
-    ssize_t      read_byte;
+    ssize_t     idx;
+    ssize_t     read_byte;
 
     init_buf_safe(&buf_safe);
     while ((read_byte = read(fd, buf, BUFFER_SIZE)) > 0)
