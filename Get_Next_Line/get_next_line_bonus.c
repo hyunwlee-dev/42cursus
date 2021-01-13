@@ -66,7 +66,7 @@ int		get_next_line(int fd, char **line)
 	ssize_t		idx;
 	ssize_t		read_byte;
 
-	if (init_buf_safe(line, &buf_safe, fd, &idx))
+	if (init_buf_safe(line, &(buf_safe[fd]), fd, &idx))
 		return (-1);
 	while ((read_byte = read(fd, buf, BUFFER_SIZE)) > 0)
 	{
