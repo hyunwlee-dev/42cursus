@@ -13,13 +13,12 @@ SRCS = ft_printf.c \
 				utils.c
 
 NAME = libftprintf.a
-INC = -I./libft
 OBJS = $(SRCS:.c=.o)
 
 all : $(NAME)
 
 $(OBJS) : $(SRCS)
-	$(CC) $(CFLAGS) $(INC) -c $(SRCS)
+	$(CC) $(CFLAGS) -c $(SRCS)
 
 $(NAME) : $(OBJS)
 	$(MAKE) -C ./libft all

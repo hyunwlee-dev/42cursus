@@ -25,7 +25,7 @@ int	print_nbr(t_op *op, int n)
 		op->nbr_minus = 1;
 		tmp *= -1;
 	}
-	if (op->is_precision && (op->precision <= 0) && n == 0)
+	if (op->is_precision && (!op->precision) && n == 0)
 		tmp_n = ft_strdup("");
 	else
 		tmp_n = treat_precision_n(*op, ft_itoa(tmp));
@@ -41,7 +41,7 @@ int	print_u_nbr(t_op op, unsigned int n)
 	char	*tmp_n;
 
 	cnt = 0;
-	if (op.is_precision && (op.precision <= 0) && n == 0)
+	if (op.is_precision && (!op.precision) && n == 0)
 		tmp_n = ft_strdup("");
 	else
 		tmp_n = treat_precision_n(op, ft_itoa(n));
