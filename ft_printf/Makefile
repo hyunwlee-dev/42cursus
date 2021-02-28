@@ -13,16 +13,7 @@ SRCS = ft_printf.c \
 				utils.c
 
 NAME = libftprintf.a
-
 INC = -I./libft
-
-#OBJ_DIR = ./obj
-#OBJ_NAME = $(SRCS:.c=.o)
-#OBJS = $(addprefix $(OBJ_DIR)/,$(OBJ_NAME))
-
-#$(OBJ_DIR)/%.o: ./%.c
-#    $(CC) $(CFLAGS) $(INC) -o $@ -c $<
-
 OBJS = $(SRCS:.c=.o)
 
 all : $(NAME)
