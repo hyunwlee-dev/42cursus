@@ -47,9 +47,9 @@ void				reverse_str(char **str)
 	}
 }
 
-unsigned long long	get_hex_size(unsigned long long n)
+unsigned long		get_hex_size(unsigned long n)
 {
-	unsigned long long	len;
+	unsigned long	len;
 
 	len = 0;
 	if (n == 0)

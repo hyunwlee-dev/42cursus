@@ -30,7 +30,7 @@ typedef struct		s_op
 }					t_op;
 int					ft_putchar(int c);
 int					ft_putstr(char *str);
-unsigned long long	get_hex_size(unsigned long long n);
+unsigned long		get_hex_size(unsigned long n);
 void				reverse_str(char **str);
 int					order_print_out(t_op op, char *tmp_s, int idx);
 void				treat_to_hex(t_op op, unsigned long long n, \
