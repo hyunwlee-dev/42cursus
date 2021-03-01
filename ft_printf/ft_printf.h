@@ -33,7 +33,7 @@ int					ft_putstr(char *str);
 unsigned long		get_hex_size(unsigned long n);
 void				reverse_str(char **str);
 int					order_print_out(t_op op, char *tmp_s, int idx);
-void				treat_to_hex(t_op op, unsigned long long n, \
+void				treat_to_hex(t_op op, unsigned long n, \
 		char **tmp_hex, int idx);
 int					treat_width_c(t_op op);
 int					treat_width_s(t_op op, char *tmp_s);

@@ -38,13 +38,13 @@ int	print_hex(t_op op, unsigned int n)
 
 int	print_addr(t_op op, void *addr)
 {
-	int					cnt;
-	unsigned long long	temp;
-	char				*tmp_hex;
-	char				*tmp_n;
+	int				cnt;
+	unsigned long	temp;
+	char			*tmp_hex;
+	char			*tmp_n;
 
 	cnt = 0;
-	temp = (unsigned long long)addr;
+	temp = (unsigned long)addr;
 	if (op.is_precision && (op.precision <= 0) && temp == 0)
 		tmp_n = ft_strdup("");
 	else

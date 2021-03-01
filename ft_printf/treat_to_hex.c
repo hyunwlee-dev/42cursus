@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-void	treat_to_hex(t_op op, unsigned long long n, char **tmp_hex, int idx)
+void	treat_to_hex(t_op op, unsigned long n, char **tmp_hex, int idx)
 {
 	const char *arr;
 
