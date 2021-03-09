@@ -1,8 +1,8 @@
 #!/bin/bash
 
-chmod 700 /run.sh
+chmod 775 /run.sh
 chown -R www-data:www-data /var/www/
-chmod -R 700 /var/www/
+chmod -R 755 /var/www/
 
 openssl req -newkey rsa:4096 -days 365 -nodes -x509 -subj "/C=KR/ST=Seoul/L=Seoul/O=42Seoul/OU=Lee/CN=localhost" -keyout hyunwlee.key -out hyunwlee.crt
 mv hyunwlee.crt etc/ssl/certs/
