@@ -1,10 +1,10 @@
 #include "get_next_line.h"
+#include "queue.h"
 #include "libft.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-//임시 헤더
 typedef struct  s_check
 {
     int R;
@@ -32,6 +32,8 @@ typedef struct  s_map
     char    *buf_safe;
     int     row;
     int     column;
+    int     player_x;
+    int     player_y;
     t_check check;
 }               t_map;
 
@@ -92,6 +94,8 @@ void    print_all(t_map map)
     printf("map.C[1]:%d\t", map.C[1]);
     printf("map.C[2]:%d\n", map.C[2]);
     printf("sizeof(map.C): %d\n", (int)sizeof(map.C));
+    printf("map.player_x:%d\n", map.player_x);
+    printf("map.player_y:%d\n", map.player_y);
     printf("---------------------------\n");
     printf("map.check.R:%d\n", map.check.R);
     printf("map.check.NO:%d\n", map.check.NO);
@@ -285,6 +289,8 @@ void    init_struct_map(t_map *map)
     map->buf_safe = ft_strdup("");
     map->row = 0;
     map->column = 0;
+    map->player_x = 0;
+    map->player_y = 0;
     ft_bzero(&(map->check), sizeof(map->check));
 }
 
@@ -409,15 +415,25 @@ int    check_correct_inside(t_map *map)
 {
     int     idx;
     int     jdx;
+    int     flag;
     char    c;
 
     idx = 0;
+    flag = 0;
     while (idx < (int)get_len(map->buf_safe, '\n'))
     {
         jdx = 0;
         while (jdx < (int)ft_strlen(map->MAP[idx]))
         {
             c = map->MAP[idx][jdx];
+            if (flag && c == 'N')
+                return (1);
+            if (c == 'N')
+            {
+                flag = 1;
+                map->player_x = idx + 1;
+                map->player_y = jdx + 1;
+            }
             if (c != ' ' && c != '0' && c != '1' && c != '2' && c != 'N')
                 return (1);
             jdx++;
@@ -441,6 +457,22 @@ int    parse_map(t_map *map)
     return (0);
 }
 
+////////////////////////////////////////////////////////////////////////////////
+/////////////////////////    map validity check BFS   //////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+void    bfs(t_map *map)
+{
+    const int   dx[4] = {0, 0, 1, -1};
+    const int   dy[4] = {1, -1, 0, 0};
+    int         check[map->row][map->column];
+
+    ft_bzero(check, sizeof(check));
+    t_queue q;
+    offer(&q, );
+}
+
+
 int main(void)
 {
     char        *line;
@@ -462,20 +494,21 @@ int main(void)
     free(line);
     line = 0;
     close(fd);
-    print_all(map);
     if (parse_map(&map))
         return (0);
+    print_all(map);
     int i = 0;
     while (i < map.row)
     {
         int j = 0;
         while (j < map.column)
         {
-            printf("%c", map.MAP_TMP[i][j]);
+            printf("%c ", map.MAP_TMP[i][j]);
             j++;
         }
         i++;
         printf("\n");
     }
+    bfs(&map);
     return (0);
 }

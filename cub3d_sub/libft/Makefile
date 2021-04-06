@@ -55,7 +55,7 @@ NAME = libft.a
 all : $(NAME)
 
 %.o : %.c
-	$(CC) -c $< $(CFLAGS)
+	$(CC) -c $< $(CFLAGS) -I../include
 
 $(NAME) : $(OBJS)
 	ar rcs $@ $(OBJS)
