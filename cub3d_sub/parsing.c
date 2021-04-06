@@ -440,6 +440,8 @@ int    check_correct_inside(t_map *map)
         }
         idx++;
     }
+    if (!flag)
+        return (1);
     return (0);
 }
 
@@ -461,15 +463,52 @@ int    parse_map(t_map *map)
 /////////////////////////    map validity check BFS   //////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-void    bfs(t_map *map)
+int    bfs(t_map *map)
 {
     const int   dx[4] = {0, 0, 1, -1};
     const int   dy[4] = {1, -1, 0, 0};
     int         check[map->row][map->column];
+    t_queue     q;
+    t_position  p;
+    t_position  p_now;
 
     ft_bzero(check, sizeof(check));
-    t_queue q;
-    offer(&q, );
+
+    q.front = 0;
+	q.rear = 0;
+    p.x = map->player_x;
+    p.y = map->player_y;
+    printf("x: %d\ty: %d\n", p.x, p.y);
+    offer(&q, p);
+    check[p.x][p.y] = 1;
+    while (!is_empty(&q))
+    {
+       p_now = poll(&q);
+       int next_x;
+       int next_y;
+       int idx = 0;
+       while (idx < 4)
+       {
+            next_x = p_now.x + dx[idx];
+            next_y = p_now.y + dy[idx];
+            if (check[next_x][next_y] == 0 && (0 <= next_x && next_x < map->row) && (0 <= next_y && next_y < map->column) \
+                && map->MAP_TMP[next_x][next_y] != '1' && map->MAP_TMP[next_x][next_y] != '2')
+            {
+                printf("x: %d\ty: %d\n", next_x, next_y);
+                if (map->MAP_TMP[next_x][next_y] == 'X')
+                {
+                    printf("[Map Parsing]map이 벽으로 둘러 싸여있지 않습니다.\n");
+                    return (1);
+                }
+                check[next_x][next_y] = 1;
+                p.x = next_x;
+                p.y = next_y;
+                offer(&q, p);
+            }
+            idx++;
+       }
+    }
+    return (0);
 }
 
 
@@ -509,6 +548,9 @@ int main(void)
         i++;
         printf("\n");
     }
-    bfs(&map);
+    if (bfs(&map))
+        printf("MAP ERROR!!!!!!\n");
+    else
+        printf("GOOD!!~");
     return (0);
 }

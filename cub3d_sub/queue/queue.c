@@ -6,11 +6,12 @@
 /*   By: hyunwlee <hyunwlee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 13:35:58 by hyunwlee          #+#    #+#             */
-/*   Updated: 2021/04/06 19:07:13 by hyunwlee         ###   ########.fr       */
+/*   Updated: 2021/04/06 19:37:49 by hyunwlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "queue.h"
+#include <stdio.h>
 
 int		is_empty(t_queue *q)
 {
