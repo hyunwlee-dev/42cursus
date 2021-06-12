@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "get_next_line.h": "c",
+        "raycast.h": "c",
+        "queue.h": "c",
+        "__locale": "c",
+        "ios": "c",
+        "__node_handle": "c"
+    }
+}
