@@ -6,7 +6,7 @@
 /*   By: hyunwlee <hyunwlee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/12 16:30:40 by hyunwlee          #+#    #+#             */
-/*   Updated: 2021/06/15 22:14:14 by hyunwlee         ###   ########.fr       */
+/*   Updated: 2021/06/16 02:26:44 by hyunwlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,8 @@ void	add_rear(t_deque *deque, int value)
 	else
 	{
 		deque->tail->r_link = new_node;
-		deque->head->l_link = new_node;
-		deque->head = new_node;
+		deque->tail = new_node;
+		deque->head->l_link = deque->tail;
 	}
 	++deque->size;
 }
@@ -96,11 +96,16 @@ int		delete_front(t_deque *deque)
 	int 	value;
 	t_node 	*removed_node;
 
-	if (is_empty(deque))
+	if (deque->size == 0)
 	{
 		perror("IS_EMPTY ERROR");
 		exit(1);
 	}
+    else if (deque->size == 1)
+    {
+        deque->head = NULL;
+        deque->tail = NULL;
+    }
 	else
 	{
 		removed_node = deque->head;

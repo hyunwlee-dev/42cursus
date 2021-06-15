@@ -6,7 +6,7 @@
 /*   By: hyunwlee <hyunwlee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/04 16:13:31 by hyunwlee          #+#    #+#             */
-/*   Updated: 2021/06/15 22:17:30 by hyunwlee         ###   ########.fr       */
+/*   Updated: 2021/06/16 02:17:03 by hyunwlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int		main(int argc, char *argv[])
 		exit(1);
 	}
 	for (int i = 1; i < argc; i++)
-		add_rear(&a_deque, ft_atoi(argv[i]));
+		add_front(&a_deque, ft_atoi(argv[i]));
 
 	printf("[a_deque] get_front: %d\n", get_front(&a_deque));
 	printf("[a_deque] get_rear: %d\n", get_rear(&a_deque));
