@@ -6,7 +6,7 @@
 /*   By: hyunwlee <hyunwlee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/12 16:30:40 by hyunwlee          #+#    #+#             */
-/*   Updated: 2021/06/15 22:05:23 by hyunwlee         ###   ########.fr       */
+/*   Updated: 2021/06/15 22:14:14 by hyunwlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,16 +61,12 @@ void	add_front(t_deque *deque, int value)
 	{
 		deque->head = new_node;
 		deque->tail = new_node;
-		deque->head->l_link = tail;
-		deque->head->r_link = tail;
-		deque->tail->l_link = head;
-		deque->tail->r_link = head;
 	}
 	else
 	{
 		deque->head->l_link = new_node;
-		deque->tail->r_link = new_node;
 		deque->head = new_node;
+		deque->tail->r_link = deque->head;
 	}
 	++deque->size;
 }
@@ -82,10 +78,6 @@ void	add_rear(t_deque *deque, int value)
 	{
 		deque->head = new_node;
 		deque->tail = new_node;
-		deque->head->l_link = tail;
-		deque->head->r_link = tail;
-		deque->tail->l_link = head;
-		deque->tail->r_link = head;
 	}
 	else
 	{

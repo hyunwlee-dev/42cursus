@@ -6,7 +6,7 @@
 /*   By: hyunwlee <hyunwlee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 16:30:12 by hyunwlee          #+#    #+#             */
-/*   Updated: 2021/06/15 20:44:28 by hyunwlee         ###   ########.fr       */
+/*   Updated: 2021/06/15 22:15:35 by hyunwlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,28 +84,28 @@ void	pb(t_deque *a_deque, t_deque *b_deque)
  *
  *	a 스택에 있는 모든 요소를 1씩 올린다 (첫번째는 맨 뒤로)
  */
-void	ra(t_deque *a_deque)
-{
-	if (is_empty(a_deque))
-	{
-		// perror("IS_EMPTY ERROR");
-		exit(1);
-	}
+// void	ra(t_deque *a_deque)
+// {
+// 	if (is_empty(a_deque))
+// 	{
+// 		// perror("IS_EMPTY ERROR");
+// 		exit(1);
+// 	}
 
-	a_deque->tail->r_link = a_deque->head;
-	a_deque->head = a_deque->head->l_link;
-	a_deque-
-	// // 1. 기존의 head의 r_link는 새로운 head가 된다.
-	// a_deque->head = a_deque->head->r_link;
-	// // 1-1 새로운 head의 l_link는 NULL가 된다.
-	// a_deque->head->l_link = NULL;
-	// // 1-2 새로운 head의 r_link는 그대로 둔다.
-	// // 2.
-	// // 기존의 tail의 l_link는 그대로 놔둔다.
-	// // 기존의 tail의 r_link는 기존의 head가 된다.
-	// // 기존의 head는 기존의 tail이 된다.
-	// a_deque->head = a_deque->head->r_link;
-}
+// 	a_deque->tail->r_link = a_deque->head;
+// 	a_deque->head = a_deque->head->l_link;
+// 	a_deque-
+// 	// // 1. 기존의 head의 r_link는 새로운 head가 된다.
+// 	// a_deque->head = a_deque->head->r_link;
+// 	// // 1-1 새로운 head의 l_link는 NULL가 된다.
+// 	// a_deque->head->l_link = NULL;
+// 	// // 1-2 새로운 head의 r_link는 그대로 둔다.
+// 	// // 2.
+// 	// // 기존의 tail의 l_link는 그대로 놔둔다.
+// 	// // 기존의 tail의 r_link는 기존의 head가 된다.
+// 	// // 기존의 head는 기존의 tail이 된다.
+// 	// a_deque->head = a_deque->head->r_link;
+// }
 // /**
 //  *	rb : rotate b
 //  *
