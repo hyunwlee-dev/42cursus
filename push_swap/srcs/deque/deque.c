@@ -6,11 +6,12 @@
 /*   By: hyunwlee <hyunwlee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/12 16:30:40 by hyunwlee          #+#    #+#             */
-/*   Updated: 2021/06/12 18:15:13 by hyunwlee         ###   ########.fr       */
+/*   Updated: 2021/06/15 22:05:23 by hyunwlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "deque.h"
+#include <stdio.h> // 나중에 삭제 해주자.
 
 /** deque 구현할 것
  --------------------------------------------------
@@ -29,6 +30,19 @@
  --------------------------------------------------
  */
 
+ /**
+  *	 init 처리 해주자
+  */
+void	init_deque()
+{
+
+}
+
+int		is_empty(t_deque *deque)
+{
+	return (deque->size == 0);
+}
+
 t_node	*creat_node(t_node *l_link, t_node *r_link, int value)
 {
 	t_node *node;
@@ -40,38 +54,61 @@ t_node	*creat_node(t_node *l_link, t_node *r_link, int value)
 	return (node);
 }
 
-int		is_empty(t_deque *deque)
+void	add_front(t_deque *deque, int value)
 {
-	return (deque->head == NULL);
+	t_node *new_node = creat_node(deque->tail, deque->head, value);
+	if (!deque->size)
+	{
+		deque->head = new_node;
+		deque->tail = new_node;
+		deque->head->l_link = tail;
+		deque->head->r_link = tail;
+		deque->tail->l_link = head;
+		deque->tail->r_link = head;
+	}
+	else
+	{
+		deque->head->l_link = new_node;
+		deque->tail->r_link = new_node;
+		deque->head = new_node;
+	}
+	++deque->size;
 }
 
 void	add_rear(t_deque *deque, int value)
 {
-	t_node *new_node = creat_node(deque->tail, NULL, value);
-	if (is_empty(deque))
+	t_node *new_node = creat_node(deque->tail, deque->head, value);
+	if (!deque->size)
+	{
 		deque->head = new_node;
-	else
-		deque->tail->r_link = new_node;
-	deque->tail = new_node;
-}
-
-void	add_front(t_deque *deque, int value)
-{
-	t_node *new_node = creat_node(NULL, deque->head, value);
-	if (is_empty(deque))
 		deque->tail = new_node;
+		deque->head->l_link = tail;
+		deque->head->r_link = tail;
+		deque->tail->l_link = head;
+		deque->tail->r_link = head;
+	}
 	else
+	{
+		deque->tail->r_link = new_node;
 		deque->head->l_link = new_node;
-	deque->head = new_node;
+		deque->head = new_node;
+	}
+	++deque->size;
 }
 
+/**
+ *	rear일때 size의 경우는 3가지 head와 tail를 NULL로 처리하기 위해서
+ */
 int		delete_front(t_deque *deque)
 {
 	int 	value;
 	t_node 	*removed_node;
 
 	if (is_empty(deque))
+	{
+		perror("IS_EMPTY ERROR");
 		exit(1);
+	}
 	else
 	{
 		removed_node = deque->head;
@@ -92,7 +129,10 @@ int		delete_rear(t_deque *deque)
 	t_node 	*removed_node;
 
 	if (is_empty(deque))
+	{
+		perror("IS_EMPTY ERROR");
 		exit(1);
+	}
 	else
 	{
 		removed_node = deque->tail;
@@ -105,4 +145,24 @@ int		delete_rear(t_deque *deque)
 			deque->tail->r_link = NULL;
 	}
 	return (value);
+}
+
+int		get_front(t_deque *deque)
+{
+	if (!deque->size)
+	{
+		perror("IS_EMPTY ERROR");
+		exit(1);
+	}
+	return (deque->head->value);
+}
+
+int		get_rear(t_deque *deque)
+{
+	if (!deque->size)
+	{
+		perror("IS_EMPTY ERROR");
+		exit(1);
+	}
+	return (deque->tail->value);
 }

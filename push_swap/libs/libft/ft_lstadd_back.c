@@ -1,43 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.c                                            :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunwlee <hyunwlee@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hyunwlee <hyunwlee@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/04 16:16:41 by hyunwlee          #+#    #+#             */
-/*   Updated: 2021/06/04 16:34:08 by hyunwlee         ###   ########.fr       */
+/*   Created: 2020/12/31 12:18:42 by hyunwlee          #+#    #+#             */
+/*   Updated: 2020/12/31 12:19:00 by hyunwlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-typedef	struct	s_node
+#include "libft.h"
+
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	int				value;
-	struct s_stack	*next;
-}				t_node;
+	t_list	*tmp;
 
-typedef struct	s_stack
-{
-	t_node	*head;
-	t_node	*tail;
-}				t_stack;
-
-int		is_empty()
-{
-
-}
-
-void	push()
-{
-
-}
-
-void	pop()
-{
-
-}
-
-int		peek()
-{
-
+	if (!new)
+		return ;
+	if (!(*lst))
+	{
+		*lst = new;
+		return ;
+	}
+	tmp = *lst;
+	ft_lstlast(*lst)->next = new;
 }
