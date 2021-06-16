@@ -6,45 +6,98 @@
 /*   By: hyunwlee <hyunwlee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/04 16:13:31 by hyunwlee          #+#    #+#             */
-/*   Updated: 2021/06/16 18:48:45 by hyunwlee         ###   ########.fr       */
+/*   Updated: 2021/06/16 21:58:38 by hyunwlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "libft.h"
-#include <stdio.h>
 
 int		main(int argc, char *argv[])
 {
-	// t_deque b_deque;
 	t_deque a_deque;
+	t_deque b_deque;
 
-	a_deque.head = NULL;
-	a_deque.tail = NULL;
-	a_deque.size = 0;
-	if (argc < 2)
+    init_deques(&a_deque, &b_deque);
+    if (argc < 2)
 	{
-		puts("INPUT ERROR");
-		exit(1);
+        clear(&a_deque, &b_deque);
+        ft_putstr("ERROR\n");
 	}
 	for (int i = 1; i < argc; i++)
-		add_rear(&a_deque, ft_atoi(argv[i]));
+		if (add_rear(&a_deque, ft_atoi(argv[i])))
+        {
+            clear(&a_deque, &b_deque);
+            ft_putstr("ERROR\n");
+        }
 
-	printf("head_value: %d\n", a_deque.head->value);
-	printf("tail_value: %d\n", a_deque.tail->value);
-	printf("size : %d\n", a_deque.size);
+    ft_putstr("a_deque.head->value: ");
+	ft_putnbr(a_deque.head->value);
+    ft_putchar('\n');
+    ft_putstr("a_deque.tail->value: ");
+	ft_putnbr(a_deque.tail->value);
+    ft_putstr("\n");
+    ft_putstr("a_deque.size: ");
+	ft_putnbr(a_deque.size);
+    ft_putchar('\n');
+    ft_putchar('\n');
+
+	add_rear(&b_deque, 42);
+    // clear(&a_deque, &b_deque);
+    //🔥
+    // // sa(&a_deque);
+    // pa(&a_deque, &b_deque);
+    // // pb(&a_deque, &b_deque);
 
     // for (;a_deque.size != 0;)
     // {
-    //     printf("%d\n", a_deque.size);
-	//     printf("[a_deque] delete_rear: %d\n\n", delete_rear(&a_deque));
+    //     ft_putstr("a_deque.size: ");
+    //     ft_putnbr(a_deque.size);
+    //     ft_putstr("\n");
+    //     ft_putstr("a_deque.value: ");
+	//     ft_putnbr(delete_front(&a_deque));
+    //     ft_putstr("\n");
     // }
-    // printf("%d\n", a_deque.head->r_link->value);
-    // printf("%d\n", a_deque.head->r_link->r_link->value);
-    // printf("%d\n", a_deque.head->r_link->r_link->r_link->value);
-    // printf("%d\n", a_deque.head->r_link->r_link->r_link->r_link->value);
-    // printf("%d\n", a_deque.head->r_link->r_link->r_link->r_link->r_link->value);
-    // printf("%d\n", a_deque.head->r_link->r_link->r_link->r_link->r_link->r_link->value);
+	// ft_putnbr(delete_front(&a_deque));
+    // ft_putstr("\n");
+    // for (;b_deque.size != 0;)
+    // {
+    //     ft_putstr("b_deque.size: ");
+    //     ft_putnbr(b_deque.size);
+    //     ft_putstr("\n");
+    //     ft_putstr("b_deque.value: ");
+	//     ft_putnbr(delete_front(&b_deque));
+    //     ft_putstr("\n");
+    //     ft_putstr("\n");
+    // }    
+    //🔥
+   // start
+   // 4
+   // 3
+   // 2
+   // 4
+   // 3
+   // 2
+   // end
+    ra(&a_deque);
+    rra(&a_deque);
+    ft_putnbr(a_deque.head->value);
+    ft_putstr("\n");
+    ft_putnbr(a_deque.tail->value);
+    ft_putstr("\n");
+    ft_putstr("start\n");
+    ft_putnbr(a_deque.head->l_link->value);
+    ft_putstr("\n");
+    ft_putnbr(a_deque.head->l_link->l_link->value);
+    ft_putstr("\n");
+    ft_putnbr(a_deque.head->l_link->l_link->l_link->value);
+    ft_putstr("\n");
+    ft_putnbr(a_deque.head->l_link->l_link->l_link->l_link->value);
+    ft_putstr("\n");
+    ft_putnbr(a_deque.head->l_link->l_link->l_link->l_link->l_link->value);
+    ft_putstr("\n");
+    ft_putnbr(a_deque.head->l_link->l_link->l_link->l_link->l_link->l_link->value);
+    ft_putstr("\n");
+    ft_putstr("end\n");
 	// puts("");
     // printf("%d\n", a_deque.tail->r_link->value);
     // printf("%d\n", a_deque.tail->r_link->r_link->value);
@@ -71,5 +124,6 @@ int		main(int argc, char *argv[])
 	// printf("[a_deque] delete_front: %d\n", delete_front(&a_deque));
 	// printf("[a_deque] delete_front: %d\n", delete_front(&a_deque));
 	// printf("[a_deque] delete_front: %d\n", delete_front(&a_deque));
+    // clear(&a_deque, &b_deque);
 	return (0);
 }

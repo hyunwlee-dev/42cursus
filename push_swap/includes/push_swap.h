@@ -6,7 +6,7 @@
 /*   By: hyunwlee <hyunwlee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 16:31:22 by hyunwlee          #+#    #+#             */
-/*   Updated: 2021/06/16 17:40:23 by hyunwlee         ###   ########.fr       */
+/*   Updated: 2021/06/16 21:58:28 by hyunwlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,20 @@
 # define PUSH_SWAP_H
 # include "deque.h"
 
+void	ft_putchar(char c);
+void    ft_putstr(char *str);
+void	ft_putnbr(int nb);
+
 void	sa(t_deque *a_deque);
 void	sb(t_deque *b_deque);
 void	ss(t_deque *a, t_deque *b);
 void	pa(t_deque *a, t_deque *b);
 void	pb(t_deque *a, t_deque *b);
-void	ra(t_deque *a);
-void	rb(t_deque *b);
-void	rr(t_deque *a, t_deque *b);
-void	rra(t_deque *a, t_deque *b);
-void	rrb(t_deque *a, t_deque *b);
-void	rrr(t_deque *a, t_deque *b);
+void	ra(t_deque *a_deque);
+void	rb(t_deque *b_deque);
+void	rr(t_deque *a_deque, t_deque *b_deque);
+void	rra(t_deque *a_deque);
+void	rrb(t_deque *b_deque);
+void	rrr(t_deque *a_deque, t_deque *b_deque);
 
 #endif
