@@ -6,20 +6,33 @@
 /*   By: hyunwlee <hyunwlee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/12 16:30:40 by hyunwlee          #+#    #+#             */
-/*   Updated: 2021/06/16 21:22:07 by hyunwlee         ###   ########.fr       */
+/*   Updated: 2021/06/16 22:09:33 by hyunwlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    init_deques(t_deque *a_deque, t_deque *b_deque)
+int    init_deques(t_deque *a_deque, t_deque *b_deque, int argc, char **argv)
 {
+    int idx;
+
+    idx = 0;
     a_deque->head = NULL;
 	a_deque->tail = NULL;
 	a_deque->size = 0;
 	b_deque->head = NULL;
 	b_deque->tail = NULL;
 	b_deque->size = 0;
+    while (++idx < argc)
+    {
+        if (add_rear(a_deque, ft_atoi(argv[idx])))
+        {
+            clear(a_deque, b_deque);
+            ft_putstr("ERROR\n");
+            return (-1);
+        }
+    }
+    return (0);
 }
 
 t_node	*creat_node(t_node *l_link, t_node *r_link, int value)

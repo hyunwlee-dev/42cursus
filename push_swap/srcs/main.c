@@ -6,7 +6,7 @@
 /*   By: hyunwlee <hyunwlee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/04 16:13:31 by hyunwlee          #+#    #+#             */
-/*   Updated: 2021/06/16 21:58:38 by hyunwlee         ###   ########.fr       */
+/*   Updated: 2021/06/16 22:08:22 by hyunwlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,13 @@ int		main(int argc, char *argv[])
 	t_deque a_deque;
 	t_deque b_deque;
 
-    init_deques(&a_deque, &b_deque);
     if (argc < 2)
 	{
-        clear(&a_deque, &b_deque);
         ft_putstr("ERROR\n");
+        return (0);
 	}
-	for (int i = 1; i < argc; i++)
-		if (add_rear(&a_deque, ft_atoi(argv[i])))
-        {
-            clear(&a_deque, &b_deque);
-            ft_putstr("ERROR\n");
-        }
-
+    if (init_deques(&a_deque, &b_deque, argc, argv))
+        return (0);
     ft_putstr("a_deque.head->value: ");
 	ft_putnbr(a_deque.head->value);
     ft_putchar('\n');
@@ -124,6 +118,6 @@ int		main(int argc, char *argv[])
 	// printf("[a_deque] delete_front: %d\n", delete_front(&a_deque));
 	// printf("[a_deque] delete_front: %d\n", delete_front(&a_deque));
 	// printf("[a_deque] delete_front: %d\n", delete_front(&a_deque));
-    // clear(&a_deque, &b_deque);
+    clear(&a_deque, &b_deque);
 	return (0);
 }

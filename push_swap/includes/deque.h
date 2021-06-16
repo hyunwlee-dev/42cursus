@@ -6,7 +6,7 @@
 /*   By: hyunwlee <hyunwlee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/12 18:11:09 by hyunwlee          #+#    #+#             */
-/*   Updated: 2021/06/16 21:22:15 by hyunwlee         ###   ########.fr       */
+/*   Updated: 2021/06/16 22:06:21 by hyunwlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct	s_deque
 	int				size;
 }				t_deque;
 
-void    init_deques(t_deque *a_deque, t_deque *b_deque);
+int     init_deques(t_deque *a_deque, t_deque *b_deque, int argc, char **argv);
 t_node  *creat_node(t_node *l_link, t_node *r_link, int value);
 int     add_front(t_deque *deque, int value);
 int     add_rear(t_deque *deque, int value);
