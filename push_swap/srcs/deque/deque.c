@@ -6,7 +6,7 @@
 /*   By: hyunwlee <hyunwlee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/12 16:30:40 by hyunwlee          #+#    #+#             */
-/*   Updated: 2021/06/16 02:26:44 by hyunwlee         ###   ########.fr       */
+/*   Updated: 2021/06/16 18:42:00 by hyunwlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,6 @@
  /**
   *	 init 처리 해주자
   */
-void	init_deque()
-{
-
-}
-
 int		is_empty(t_deque *deque)
 {
 	return (deque->size == 0);
@@ -93,54 +88,63 @@ void	add_rear(t_deque *deque, int value)
  */
 int		delete_front(t_deque *deque)
 {
-	int 	value;
 	t_node 	*removed_node;
+    int     value;
 
+    value = 0;
 	if (deque->size == 0)
 	{
 		perror("IS_EMPTY ERROR");
 		exit(1);
 	}
-    else if (deque->size == 1)
-    {
+   else if (deque->size == 1)
+   {
+        value = deque->head->value;
+        free(deque->head);
         deque->head = NULL;
         deque->tail = NULL;
-    }
+   }
 	else
 	{
 		removed_node = deque->head;
 		value = removed_node->value;
 		deque->head = deque->head->r_link;
 		free(removed_node);
-		if (deque->head == NULL)
-			deque->tail = NULL;
-		else
-			deque->head->l_link = NULL;
+		deque->tail->r_link = deque->head;
+		deque->head->l_link = deque->tail;
 	}
+	--deque->size;
 	return (value);
 }
 
 int		delete_rear(t_deque *deque)
 {
-	int 	value;
 	t_node 	*removed_node;
+	int 	value;
 
-	if (is_empty(deque))
+    value = 0;
+	if (!deque->size)
 	{
 		perror("IS_EMPTY ERROR");
 		exit(1);
 	}
+    else if (deque->size == 1)
+    {
+        value = deque->head->value;
+        free(deque->head);
+        deque->head = NULL;
+        deque->tail = NULL;
+    }
 	else
 	{
 		removed_node = deque->tail;
 		value = removed_node->value;
 		deque->tail = deque->tail->l_link;
 		free(removed_node);
-		if (deque->tail == NULL)
-			deque->head = NULL;
-		else
-			deque->tail->r_link = NULL;
+		deque->head->l_link = deque->tail;
+		deque->tail->r_link = deque->head;
 	}
+	--deque->size;
 	return (value);
 }
 
