@@ -1,37 +1,41 @@
-#include <iostream>
-using namespace std;
+#include <stdio.h>
 //퀵정렬
-int n,cnt, quick[10000001];
+int number = 10;
+int data[10] = {1, 10, 5, 8, 7, 6, 4, 3, 2, 9};
 
-void quickSort(int i, int j)
+void quickSort(int *data, int start, int end)
 {
-	if(i>=j) return;
-	int pivot = quick[(i+j)/2];
-	int left = i;
-	int right = j;
+	int i = start;
+	int j = end;
+	int pivot = data[(i + j) / 2];
+	printf("pivot: %d\n", pivot);
+	int temp;
 
-	while(left<=right)
+	if(start >= end)
+		return;
+	while(i <= j)
 	{
-		while(quick[left]<pivot) left++;
-		while(quick[right]>pivot) right--;
-		if(left<=right)
+		while(data[i] < data[pivot])
+			i++;
+		while(data[j] > data[pivot])
+			j--;
+		if(i <= j)					// i와 j가 엇갈리지 않았을 때
 		{
-			swap(quick[left],quick[right]);
-			left++; right--;
+			temp = data[i];
+			data[i] = data[j];
+			data[j] = temp;
+			i++;
+			j--;
 		}
 	}
-	quickSort(i,right);
-	quickSort(left,j);
+	quickSort(data, start, j);
+	quickSort(data, i, end);
 }
 
 int main()
 {
-	scanf("%d",&n);
-	for(int i = 0; i < n; i++)
-		scanf("%d",&quick[i]);
+	quickSort(data, 0, number - 1);
 
-	quickSort(0,n-1);
-
-	for(int j = 0; j < n; j++) // 출력
-		printf("%d\n",quick[j]);
+	for(int i = 0; i < number; i++) // 출력
+		printf("%d ", data[i]);
 }

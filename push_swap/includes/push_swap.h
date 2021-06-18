@@ -6,7 +6,7 @@
 /*   By: hyunwlee <hyunwlee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 16:31:22 by hyunwlee          #+#    #+#             */
-/*   Updated: 2021/06/16 21:58:28 by hyunwlee         ###   ########.fr       */
+/*   Updated: 2021/06/18 19:34:04 by hyunwlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 void	ft_putchar(char c);
 void    ft_putstr(char *str);
 void	ft_putnbr(int nb);
+
+void 	quick_sort(t_deque *a_deque, t_deque *b_deque, int start, int end);
 
 void	sa(t_deque *a_deque);
 void	sb(t_deque *b_deque);
