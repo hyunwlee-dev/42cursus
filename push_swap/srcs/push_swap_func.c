@@ -6,7 +6,7 @@
 /*   By: hyunwlee <hyunwlee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 16:30:12 by hyunwlee          #+#    #+#             */
-/*   Updated: 2021/06/16 21:58:09 by hyunwlee         ###   ########.fr       */
+/*   Updated: 2021/06/21 19:54:19 by hyunwlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ void	ra(t_deque *a_deque)
     a_deque->head = a_deque->head->r_link;
     a_deque->tail = a_deque->head->l_link;
 }
+
 void	rb(t_deque *b_deque)
 {
     b_deque->head = b_deque->head->r_link;
@@ -107,11 +108,13 @@ void	rra(t_deque *a_deque)
     a_deque->head = a_deque->head->l_link;
     a_deque->tail = a_deque->head->l_link;
 }
+
 void	rrb(t_deque *b_deque)
 {
     b_deque->head = b_deque->head->l_link;
     b_deque->tail = b_deque->head->l_link;
 }
+
 void	rrr(t_deque *a_deque, t_deque *b_deque)
 {
     rra(a_deque);

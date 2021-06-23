@@ -6,7 +6,7 @@
 /*   By: hyunwlee <hyunwlee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/12 16:30:40 by hyunwlee          #+#    #+#             */
-/*   Updated: 2021/06/16 22:09:33 by hyunwlee         ###   ########.fr       */
+/*   Updated: 2021/06/23 11:39:29 by hyunwlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,12 @@ int    init_deques(t_deque *a_deque, t_deque *b_deque, int argc, char **argv)
     return (0);
 }
 
-t_node	*creat_node(t_node *l_link, t_node *r_link, int value)
+t_node	*creat_node(t_node *l_link, t_node *r_link, int value, int idx)
 {
 	t_node *node;
 	if (!(node = (t_node *)malloc(sizeof(t_node))))
 		return (NULL);
+    node->idx = idx;
 	node->value = value;
 	node->l_link = l_link;
 	node->r_link = r_link;
@@ -50,7 +51,7 @@ int add_front(t_deque *deque, int value)
 {
 	t_node *new_node;
     
-    if (!(new_node = creat_node(deque->tail, deque->head, value)))
+    if (!(new_node = creat_node(deque->tail, deque->head, value, deque->size)))
         return(-1);
 	if (!deque->size)
 	{
@@ -70,7 +71,7 @@ int add_front(t_deque *deque, int value)
 int     add_rear(t_deque *deque, int value)
 {
 	t_node *new_node;
-    if (!(new_node = creat_node(deque->tail, deque->head, value)))
+    if (!(new_node = creat_node(deque->tail, deque->head, value, deque->size)))
         return (-1);
 	if (!deque->size)
 	{
@@ -107,15 +108,47 @@ int		delete_front(t_deque *deque)
    }
 	else
 	{
+        ft_putstr("deque->size: ");
+        ft_putnbr(deque->size);
+        ft_putstr("\n");
+        ft_putstr("deque->size - 1: ");
+        ft_putnbr(deque->size - 1);
+        ft_putstr("\n");
 		removed_node = deque->head;
 		value = removed_node->value;
 		deque->head = deque->head->r_link;
 		free(removed_node);
 		deque->tail->r_link = deque->head;
 		deque->head->l_link = deque->tail;
+        ////////////////////////////////////////////////////////
+        t_node *now_node = deque->head;
+        ft_putstr("helllllllllo?\n");
+        while (now_node->idx != deque->size - 1)
+        {
+            now_node->idx--;
+            now_node = now_node->r_link;
+        }
+        now_node->idx--;
+        ft_putstr("byeeeeeeeeeeeeee?\n");
+        ////////////////////////////////////////////////////////
 	}
 	--deque->size;
 	return (value);
+}
+
+// void    decrease_nodes_idx(t_node *node,int deq_size)
+// {
+//     int i;
+
+//     i = 0;
+//     while (++i < deq_size)
+//     {
+//         node->
+//     }
+// }
+void    increase_idxs()
+{
+    
 }
 
 int		delete_rear(t_deque *deque)
@@ -182,4 +215,29 @@ void    clear(t_deque *a_deque, t_deque *b_deque)
         ft_putnbr(delete_front(b_deque));
         ft_putstr("\n");
     }
+}
+
+// int     find_pivot(t_deque deque)
+// {
+    
+// }
+
+void    print_all(t_deque *deque)
+{
+    int idx = -1;
+    t_node *node = deque->head;
+
+    ft_putstr("🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲\n");
+    while (++idx < deque->size)
+    {
+        ft_putstr("idx: ");
+        ft_putnbr(node->idx);
+        ft_putstr("\t");
+        ft_putstr("value: ");
+        ft_putnbr(node->value);
+        ft_putstr("\n");
+        ft_putstr("\n");
+        node = node->r_link;
+    }
+    ft_putstr("🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲\n");
 }
