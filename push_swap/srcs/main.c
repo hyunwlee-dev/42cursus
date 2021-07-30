@@ -6,7 +6,7 @@
 /*   By: hyunwlee <hyunwlee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/04 16:13:31 by hyunwlee          #+#    #+#             */
-/*   Updated: 2021/06/22 22:54:43 by hyunwlee         ###   ########.fr       */
+/*   Updated: 2021/07/30 18:57:36 by hyunwlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,27 @@ int		main(int argc, char *argv[])
 	}
     if (init_deques(&a_deque, &b_deque, argc, argv))
         return (0);
+    ft_putstr("시작 합니다1.\n");
+    print_all(&a_deque);
+    ft_putstr("시작 합니다2.\n");
+    print_all(&b_deque);
+    ft_putstr("시작 합니다3.\n");
+    ft_putstr("-------------------------------------------------\n");
+    // delete_front(&a_deque);
+    // delete_front(&a_deque);
+    // delete_front(&a_deque);
+    // ra(&a_deque);
+    ft_putstr("-------------------------------------------------\n");
+    ft_putnbr(a_deque.size);
+    ft_putstr(" a_to_b를 시작합니다.\n");
+    a_to_b(&a_deque, &b_deque, 0, a_deque.size - 1);
+    ft_putstr("-------------------------------------------------\n");
     print_all(&a_deque);
     print_all(&b_deque);
-    // ft_putstr("-------------------------------------------------\n");
-    // delete_front(&a_deque);
-    // delete_front(&a_deque);
-    // delete_front(&a_deque);
     ft_putstr("-------------------------------------------------\n");
-    a_to_b(&a_deque, &b_deque, 0, a_deque.size - 1);
+    ft_putnbr(a_deque.size);
+    ft_putstr(" b_to_a를 시작합니다.\n");
+    b_to_a(&a_deque, &b_deque, 0, b_deque.size - 1);
     ft_putstr("-------------------------------------------------\n");
     print_all(&a_deque);
     print_all(&b_deque);

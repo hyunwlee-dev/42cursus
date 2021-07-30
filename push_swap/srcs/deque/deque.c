@@ -6,7 +6,7 @@
 /*   By: hyunwlee <hyunwlee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/12 16:30:40 by hyunwlee          #+#    #+#             */
-/*   Updated: 2021/06/23 11:39:29 by hyunwlee         ###   ########.fr       */
+/*   Updated: 2021/07/30 18:26:02 by hyunwlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int    init_deques(t_deque *a_deque, t_deque *b_deque, int argc, char **argv)
 t_node	*creat_node(t_node *l_link, t_node *r_link, int value, int idx)
 {
 	t_node *node;
+    
 	if (!(node = (t_node *)malloc(sizeof(t_node))))
 		return (NULL);
     node->idx = idx;
@@ -71,6 +72,7 @@ int add_front(t_deque *deque, int value)
 int     add_rear(t_deque *deque, int value)
 {
 	t_node *new_node;
+    
     if (!(new_node = creat_node(deque->tail, deque->head, value, deque->size)))
         return (-1);
 	if (!deque->size)
@@ -108,29 +110,19 @@ int		delete_front(t_deque *deque)
    }
 	else
 	{
-        ft_putstr("deque->size: ");
-        ft_putnbr(deque->size);
-        ft_putstr("\n");
-        ft_putstr("deque->size - 1: ");
-        ft_putnbr(deque->size - 1);
-        ft_putstr("\n");
 		removed_node = deque->head;
 		value = removed_node->value;
 		deque->head = deque->head->r_link;
 		free(removed_node);
 		deque->tail->r_link = deque->head;
 		deque->head->l_link = deque->tail;
-        ////////////////////////////////////////////////////////
-        t_node *now_node = deque->head;
-        ft_putstr("helllllllllo?\n");
-        while (now_node->idx != deque->size - 1)
-        {
-            now_node->idx--;
-            now_node = now_node->r_link;
-        }
-        now_node->idx--;
-        ft_putstr("byeeeeeeeeeeeeee?\n");
-        ////////////////////////////////////////////////////////
+        // t_node *now_node = deque->head;
+        // while (now_node->idx != deque->size - 1)
+        // {
+        //     now_node->idx--;
+        //     now_node = now_node->r_link;
+        // }
+        // now_node->idx--;
 	}
 	--deque->size;
 	return (value);

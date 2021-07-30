@@ -6,7 +6,7 @@
 /*   By: hyunwlee <hyunwlee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 16:30:12 by hyunwlee          #+#    #+#             */
-/*   Updated: 2021/06/21 19:54:19 by hyunwlee         ###   ########.fr       */
+/*   Updated: 2021/07/30 18:31:36 by hyunwlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,31 @@ void	pb(t_deque *a_deque, t_deque *b_deque)
  *
  *	a 스택에 있는 모든 요소를 1씩 올린다 (첫번째는 맨 뒤로)
  */
-void	ra(t_deque *a_deque)
+void	ra(t_deque *a_deque)            // ra, rb, rra, rrb 에서 idx 정렬시키는거 따로 함수 빼자 나중에
 {
     a_deque->head = a_deque->head->r_link;
     a_deque->tail = a_deque->head->l_link;
+}
+
+void    retreat_idx(t_deque *a_deque, t_deque *b_deque)
+{
+    int idx;
+    t_node *node;
+
+    idx = 0;
+    node = a_deque->head;
+    while (idx < a_deque->size)
+    {
+        node->idx = idx++;
+        node = node->r_link;
+    }
+    idx = 0;
+    node = b_deque->head;
+    while (idx < b_deque->size)
+    {
+        node->idx = idx++;
+        node = node->r_link;
+    }
 }
 
 void	rb(t_deque *b_deque)
