@@ -6,7 +6,7 @@
 /*   By: hyunwlee <hyunwlee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 19:16:20 by hyunwlee          #+#    #+#             */
-/*   Updated: 2021/06/16 19:34:43 by hyunwlee         ###   ########.fr       */
+/*   Updated: 2021/09/23 17:05:45 by hyunwlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ void	ft_putchar(char c)
 	write(1, &c, 1);
 }
 
-void    ft_putstr(char *str)
+void	ft_putstr(char *str)
 {
-    int     idx;
+	int	idx;
 
-    idx = 0;
-    while (*(str + idx))
-        ft_putchar(*(str + idx++));
+	idx = 0;
+	while (*(str + idx))
+		ft_putchar(*(str + idx++));
 }
 
 void	ft_putnbr(int nb)
@@ -47,4 +47,23 @@ void	ft_putnbr(int nb)
 		ft_putnbr(nb / 10);
 		ft_putchar(nb % 10 + '0');
 	}
+}
+
+size_t	get_len(char const *s, char c)
+{
+	size_t	i;
+	size_t	cnt;
+
+	i = 0;
+	cnt = 0;
+	while (*(s + i))
+	{
+		if (*(s + i) != c)
+			++cnt;
+		while (*(s + i) != c && *(s + i))
+			++i;
+		if (*(s + i) == c)
+			++i;
+	}
+	return (cnt);
 }

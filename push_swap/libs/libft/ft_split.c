@@ -6,7 +6,7 @@
 /*   By: hyunwlee <hyunwlee@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 20:41:33 by hyunwlee          #+#    #+#             */
-/*   Updated: 2020/12/30 16:42:32 by hyunwlee         ###   ########.fr       */
+/*   Updated: 2021/09/23 19:11:18 by hyunwlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static size_t	get_len(char const *s, char c)
 	return (cnt);
 }
 
-static void		str_cpy(char *dst, const char *src, size_t start, size_t end)
+static void	str_cpy(char *dst, const char *src, size_t start, size_t end)
 {
 	size_t	i;
 
@@ -44,7 +44,7 @@ static void		str_cpy(char *dst, const char *src, size_t start, size_t end)
 	*(dst + i) = '\0';
 }
 
-static void		free_mal(char **tmp, size_t j)
+static void	free_mal(char **tmp, size_t j)
 {
 	size_t	i;
 
@@ -54,7 +54,7 @@ static void		free_mal(char **tmp, size_t j)
 	free(tmp);
 }
 
-static int		sub_split(char **tmp, char const *str, char c)
+static int	sub_split(char **tmp, char const *str, char c)
 {
 	size_t	i;
 	size_t	j;
@@ -72,7 +72,8 @@ static int		sub_split(char **tmp, char const *str, char c)
 		}
 		while (*(str + i) != c && *(str + i))
 			i++;
-		if (!(tmp[j] = (char *)malloc(sizeof(char) * (i - k + 1))))
+		tmp[j] = (char *)malloc(sizeof(char) * (i - k + 1));
+		if (!tmp[j])
 		{
 			free_mal(tmp, j);
 			return (1);
@@ -82,13 +83,14 @@ static int		sub_split(char **tmp, char const *str, char c)
 	return (0);
 }
 
-char			**ft_split(char const *str, char c)
+char	**ft_split(char const *str, char c)
 {
 	char	**tmp;
 	size_t	len;
 
 	len = get_len(str, c);
-	if (!(tmp = (char **)malloc(sizeof(char *) * (len + 1))))
+	tmp = (char **)malloc(sizeof(char *) * (len + 1));
+	if (!tmp)
 		return (NULL);
 	tmp[len] = 0;
 	if (sub_split(tmp, str, c))

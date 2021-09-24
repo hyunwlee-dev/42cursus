@@ -6,7 +6,7 @@
 /*   By: hyunwlee <hyunwlee@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 11:05:51 by hyunwlee          #+#    #+#             */
-/*   Updated: 2020/12/30 16:42:32 by hyunwlee         ###   ########.fr       */
+/*   Updated: 2021/09/23 19:14:56 by hyunwlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 
 	i = 0;
 	len = ft_strlen(s);
-	if (!(tmp = (char *)malloc(sizeof(char) * (len + 1))))
+	tmp = (char *)malloc(sizeof(char) * (len + 1));
+	if (!tmp)
 		return (NULL);
 	while (i < len)
 	{

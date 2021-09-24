@@ -6,7 +6,7 @@
 /*   By: hyunwlee <hyunwlee@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 01:31:09 by hyunwlee          #+#    #+#             */
-/*   Updated: 2020/12/30 16:42:32 by hyunwlee         ###   ########.fr       */
+/*   Updated: 2021/09/23 19:13:38 by hyunwlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ char	*ft_strdup(const char *str)
 	int		idx;
 
 	idx = 0;
-	if (!(tmp = (char *)malloc(sizeof(char) * (ft_strlen(str) + 1))))
+	tmp = (char *)malloc(sizeof(char) * (ft_strlen(str) + 1));
+	if (!tmp)
 		return (NULL);
 	while (*str)
 		*(tmp + (idx++)) = *(str++);

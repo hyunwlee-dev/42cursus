@@ -6,7 +6,7 @@
 /*   By: hyunwlee <hyunwlee@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/31 12:18:55 by hyunwlee          #+#    #+#             */
-/*   Updated: 2020/12/31 12:19:00 by hyunwlee         ###   ########.fr       */
+/*   Updated: 2021/09/23 19:08:10 by hyunwlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ t_list	*ft_lstnew(void *content)
 {
 	t_list	*tmp;
 
-	if (!(tmp = (t_list *)malloc(sizeof(t_list))))
+	tmp = (t_list *)malloc(sizeof(t_list));
+	if (!tmp)
 		return (NULL);
 	tmp->content = content;
 	tmp->next = NULL;

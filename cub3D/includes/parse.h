@@ -6,14 +6,13 @@
 /*   By: hyunwlee <hyunwlee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/02 19:38:43 by hyunwlee          #+#    #+#             */
-/*   Updated: 2021/06/04 02:08:16 by hyunwlee         ###   ########.fr       */
+/*   Updated: 2021/09/20 13:08:26 by hyunwlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSE_H
 # define PARSE_H
 
-# include <stdio.h>
 # include "libft.h"
 # include "get_next_line.h"
 # include "queue.h"

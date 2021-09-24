@@ -6,7 +6,7 @@
 /*   By: hyunwlee <hyunwlee@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 15:59:38 by hyunwlee          #+#    #+#             */
-/*   Updated: 2020/12/30 16:42:32 by hyunwlee         ###   ########.fr       */
+/*   Updated: 2021/09/23 19:14:14 by hyunwlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	if (!s1 || !s2)
 		return (NULL);
 	len = ft_strlen(s1) + ft_strlen(s2);
-	if (!(tmp = (char *)malloc(sizeof(char) * (len + 1))))
+	tmp = (char *)malloc(sizeof(char) * (len + 1));
+	if (!tmp)
 		return (NULL);
 	i = 0;
 	while (*s1)
