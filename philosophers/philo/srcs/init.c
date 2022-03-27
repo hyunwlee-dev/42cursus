@@ -6,7 +6,7 @@
 /*   By: hyunwlee <hyunwlee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 01:31:24 by hyunwlee          #+#    #+#             */
-/*   Updated: 2021/11/26 23:18:23 by hyunwlee         ###   ########.fr       */
+/*   Updated: 2021/11/27 01:13:43 by hyunwlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ int	init_infos(int argc, char *argv[], t_info *infos)
 
 	if (init_args(argc, argv, &infos->args))
 		return (-1);
+    if (!infos->args.number_philos)
+        return (-1);
 	infos->is_all_live = 1;
 	infos->start_time = get_time();
 	infos->fork = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) \

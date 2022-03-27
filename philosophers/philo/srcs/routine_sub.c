@@ -6,7 +6,7 @@
 /*   By: hyunwlee <hyunwlee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 21:47:43 by hyunwlee          #+#    #+#             */
-/*   Updated: 2021/11/26 23:21:51 by hyunwlee         ###   ########.fr       */
+/*   Updated: 2021/11/27 19:20:36 by hyunwlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	print_state(t_philos *philos, t_state thread_state)
 		printf("%ldms %d has taken a fork\n", \
 				get_time() - philos->info->start_time, philos->idx);
 	else if (philos->info->is_all_live && thread_state == EAT)
-		printf("%ldms %d is eating\n", \
-				get_time() - philos->info->start_time, philos->idx);
+		printf("%ldms %d is eating [%d]\n", \
+				get_time() - philos->info->start_time, philos->idx, philos->eat_cnt + 1);
 	else if (philos->info->is_all_live && thread_state == SLEEP)
 		printf("%ldms %d is sleeping\n", \
 				get_time() - philos->info->start_time, philos->idx);

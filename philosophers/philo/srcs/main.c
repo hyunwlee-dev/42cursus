@@ -6,7 +6,7 @@
 /*   By: hyunwlee <hyunwlee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 16:53:52 by hyunwlee          #+#    #+#             */
-/*   Updated: 2021/11/26 22:08:32 by hyunwlee         ###   ########.fr       */
+/*   Updated: 2021/11/27 19:16:10 by hyunwlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,6 @@ int	main(int argc, char *argv[])
 {
 	if (init_total(argc, argv))
 		return (-1);
+    while (1);
 	return (0);
 }
